@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(python src/core.py:*)",
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(powershell -Command \"dir ''C:\\\\Users\\\\joeh\\\\Documents\\\\Claude_Workspace\\\\Public-Projects\\\\url-shortcut-creator\\\\dist\\\\*.exe''\")",
+      "Bash(powershell -Command:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git add:*)",
+      "Bash(git init:*)",
+      "Bash(git reset:*)"
+    ]
+  }
+}

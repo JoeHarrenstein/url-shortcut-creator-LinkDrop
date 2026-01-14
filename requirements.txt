@@ -1,0 +1,5 @@
+requests
+Pillow
+customtkinter
+pyinstaller
+pywin32
