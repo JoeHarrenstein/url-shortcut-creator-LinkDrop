@@ -10,7 +10,12 @@
       "Bash(git rev-parse:*)",
       "Bash(git add:*)",
       "Bash(git init:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(gh release create:*)"
     ]
   }
 }
