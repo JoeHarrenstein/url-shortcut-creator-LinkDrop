@@ -1,5 +1,10 @@
 # LinkDrop
 
+[![GitHub release](https://img.shields.io/github/v/release/JoeHarrenstein/url-shortcut-creator-LinkDrop)](https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Platform](https://img.shields.io/badge/platform-Windows-blue)](https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop)
+[![Python](https://img.shields.io/badge/python-3.10+-green)](https://www.python.org/)
+
 A Windows desktop utility for creating `.url` shortcut files with automatic favicon fetching. Perfect for teams using shared network drives who need quick access to web-based project resources.
 
 ## Features
