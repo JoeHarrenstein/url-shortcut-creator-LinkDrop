@@ -11,6 +11,20 @@ A Windows desktop utility for creating `.url` shortcut files with automatic favi
 - **Dark Mode UI** - Modern interface using CustomTkinter
 - **UNC Path Support** - Works with network paths (`\\server\share\folder`)
 
+## Screenshots
+
+### Main Application - Single Mode
+![Single Mode](screenshots/Main%20App%20-%20Single%20Mode.png)
+
+### Main Application - Batch Mode
+![Batch Mode](screenshots/Main%20App%20-%20Batch%20Mode.png)
+
+### Right-Click Context Menu
+![Context Menu](screenshots/Context%20Menu.png)
+
+### Quick Popup
+![Quick Popup](screenshots/Quick%20popup.png)
+
 ## Installation
 
 ### Option 1: Download Release (Recommended)
