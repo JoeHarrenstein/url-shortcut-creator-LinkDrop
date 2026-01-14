@@ -29,7 +29,7 @@ A Windows desktop utility for creating `.url` shortcut files with automatic favi
 
 ### Option 1: Download Release (Recommended)
 
-1. Download the latest release ZIP
+1. Download the latest release ZIP from the [Releases page](https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop/releases)
 2. Extract to a folder (e.g., `C:\Program Files\LinkDrop`)
 3. Run `Install_LinkDrop.exe`
 4. Click "Yes" on the UAC prompt
