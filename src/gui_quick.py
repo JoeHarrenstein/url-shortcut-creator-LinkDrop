@@ -159,6 +159,23 @@ class QuickPopup(ctk.CTk):
         # Focus on URL field
         self.url_entry.focus_set()
 
+        # Check clipboard for URL on startup
+        self.after(100, self._check_clipboard_for_url)
+
+    def _check_clipboard_for_url(self):
+        """Auto-fill URL from clipboard if it contains a valid URL."""
+        try:
+            clipboard = self.clipboard_get()
+            if clipboard and not self.url_entry.get().strip():
+                # Check if clipboard looks like a URL
+                is_valid, normalized = validate_url(clipboard)
+                if is_valid:
+                    self.url_entry.insert(0, clipboard.strip())
+                    self._check_auto_name()
+        except Exception:
+            # Clipboard may be empty or contain non-text data
+            pass
+
     def bind_events(self):
         """Bind keyboard shortcuts."""
         self.bind('<Return>', lambda e: self.create_shortcut())

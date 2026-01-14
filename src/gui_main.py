@@ -449,6 +449,23 @@ class LinkDropApp(ctk.CTk):
         self.folder_var.set(initial_folder)
         self.update_recent_folders()
 
+        # Check clipboard for URL on startup
+        self.after(100, self._check_clipboard_for_url)
+
+    def _check_clipboard_for_url(self):
+        """Auto-fill URL from clipboard if it contains a valid URL."""
+        try:
+            clipboard = self.clipboard_get()
+            if clipboard and not self.single_url.get().strip():
+                # Check if clipboard looks like a URL
+                is_valid, normalized = validate_url(clipboard)
+                if is_valid:
+                    self.single_url.insert(0, clipboard.strip())
+                    self._auto_fill_name()
+        except Exception:
+            # Clipboard may be empty or contain non-text data
+            pass
+
     def update_recent_folders(self):
         """Update the recent folders dropdown."""
         valid_recent = [f for f in self.config_data.recent_folders if os.path.isdir(f)]
