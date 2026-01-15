@@ -2,7 +2,7 @@
 ; Creates a professional Windows installer with Add/Remove Programs support
 
 #define MyAppName "LinkDrop"
-#define MyAppVersion "1.1"
+#define MyAppVersion "1.2"
 #define MyAppPublisher "Joe Harrenstein"
 #define MyAppURL "https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop"
 #define MyAppExeName "LinkDrop.exe"
