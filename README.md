@@ -10,11 +10,20 @@ A Windows desktop utility for creating `.url` shortcut files with automatic favi
 ## Features
 
 - **Single Mode** - Create one shortcut at a time with a clean, simple interface
-- **Batch Mode** - Create multiple shortcuts at once
-- **Favicon Fetching** - Automatically downloads and applies website icons
+- **Batch Mode** - Create multiple shortcuts at once with auto-fill for names
+- **Favicon Fetching** - Automatically downloads and applies high-quality website icons (256px)
+- **Clipboard Auto-Detect** - Automatically fills URL field when you have a URL copied
+- **Duplicate File Warning** - Prompts before overwriting existing shortcuts
 - **Right-Click Integration** - "LinkDrop Here" context menu option in Windows Explorer
 - **Dark Mode UI** - Modern interface using CustomTkinter
 - **UNC Path Support** - Works with network paths (`\\server\share\folder`)
+
+## What's New in v1.2
+
+- **Smarter Clipboard Detection** - Only auto-fills when clipboard contains a valid URL (ignores random text)
+- **Batch Mode Auto-Fill** - Name column now auto-populates from URL, just like Single mode
+- **Duplicate File Warning** - Asks before overwriting existing shortcuts
+- **Improved Icon Quality** - Fetches higher resolution favicons (256px) for sharper icons
 
 ## Screenshots
 
@@ -32,17 +41,18 @@ A Windows desktop utility for creating `.url` shortcut files with automatic favi
 
 ## Installation
 
-### Option 1: Download Release (Recommended)
+### Option 1: Download Installer (Recommended)
 
-1. Download the latest release ZIP from the [Releases page](https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop/releases)
-2. Extract to a folder (e.g., `C:\Program Files\LinkDrop`)
-3. Run `Install_LinkDrop.exe`
-4. Click "Yes" on the UAC prompt
+1. Download `LinkDrop-Setup-1.2.exe` from the [Releases page](https://github.com/JoeHarrenstein/url-shortcut-creator-LinkDrop/releases)
+2. Run the installer
+3. Follow the setup wizard
 
-This will:
+The installer will:
+- Install LinkDrop to Program Files
 - Add "LinkDrop Here" to your right-click context menu
 - Create a Desktop shortcut
 - Add LinkDrop to your Start Menu
+- Register in Add/Remove Programs for easy uninstallation
 
 ### Option 2: Build from Source
 
@@ -119,12 +129,13 @@ python scripts/build.py
 
 ## Uninstalling
 
-Run `Uninstall_LinkDrop.exe` to remove:
-- Right-click context menu entry
-- Desktop shortcut
-- Start Menu folder
+**If installed via the Setup installer:**
+- Open Windows Settings > Apps > Installed Apps
+- Search for "LinkDrop" and click Uninstall
 
-Then delete the installation folder.
+**If installed manually:**
+- Run `Uninstall_LinkDrop.exe` to remove registry entries and shortcuts
+- Delete the installation folder
 
 ## License
 
