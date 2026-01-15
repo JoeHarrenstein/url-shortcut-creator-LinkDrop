@@ -10,12 +10,13 @@ import os
 import ctypes
 import threading
 import customtkinter as ctk
+from tkinter import messagebox
 
 # Add parent directory to path for imports when running as script
 if __name__ == "__main__":
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.core import create_url_shortcut, validate_url, ShortcutResult
+from src.core import create_url_shortcut, validate_url, is_likely_url, sanitize_filename, ShortcutResult
 from src.config import Config, load_config, save_config
 
 # App colors
@@ -86,6 +87,8 @@ class BatchRow(ctk.CTkFrame):
         # URL entry (first - for paste and auto-fill flow)
         self.url_entry = ctk.CTkEntry(self, placeholder_text="URL", height=32)
         self.url_entry.grid(row=0, column=0, sticky="ew", padx=(0, 5), pady=2)
+        self.url_entry.bind('<Control-v>', lambda e: self.after(50, self._auto_fill_name))
+        self.url_entry.bind('<FocusOut>', lambda e: self._auto_fill_name())
 
         # Name entry
         self.name_entry = ctk.CTkEntry(self, placeholder_text="Name", height=32)
@@ -106,6 +109,28 @@ class BatchRow(ctk.CTkFrame):
 
     def _delete(self):
         self.on_delete(self)
+
+    def _auto_fill_name(self):
+        """Auto-fill name from URL if name is empty."""
+        if self.name_entry.get().strip():
+            return
+
+        url = self.url_entry.get().strip()
+        if not url:
+            return
+
+        try:
+            from urllib.parse import urlparse
+            if not url.startswith(('http://', 'https://')):
+                url = 'https://' + url
+            parsed = urlparse(url)
+            domain = parsed.netloc
+            name = domain.replace('www.', '').split('.')[0].title()
+            if name:
+                self.name_entry.delete(0, 'end')
+                self.name_entry.insert(0, name)
+        except Exception:
+            pass
 
     def get_data(self):
         """Return (name, url) tuple."""
@@ -461,9 +486,8 @@ class LinkDropApp(ctk.CTk):
                 # Skip file paths (Windows drive letters or UNC paths)
                 if len(clipboard) > 2 and (clipboard[1] == ':' or clipboard.startswith('\\\\')):
                     return
-                # Check if clipboard looks like a URL
-                is_valid, normalized = validate_url(clipboard)
-                if is_valid:
+                # Use strict URL detection for clipboard (rejects random text)
+                if is_likely_url(clipboard):
                     self.single_url.insert(0, clipboard)
                     self._auto_fill_name()
         except Exception:
@@ -551,6 +575,23 @@ class LinkDropApp(ctk.CTk):
         if not folder or not os.path.isdir(folder):
             return
 
+        # Check for existing file
+        safe_name = sanitize_filename(name)
+        shortcut_path = os.path.join(folder, f"{safe_name}.url")
+        if os.path.exists(shortcut_path):
+            response = messagebox.askyesnocancel(
+                "File Exists",
+                f"'{safe_name}.url' already exists.\n\nDo you want to replace it?",
+                icon='warning'
+            )
+            if response is None:  # Cancel
+                return
+            if not response:  # No - user can rename manually
+                self.single_name.focus_set()
+                self.single_name.select_range(0, 'end')
+                return
+            # Yes - continue to overwrite
+
         # Disable button
         self.single_create_btn.configure(state="disabled")
         self.status_var.set("Creating shortcut...")
@@ -591,6 +632,31 @@ class LinkDropApp(ctk.CTk):
         valid_rows = [(r.get_data()) for r in self.batch_rows if r.is_valid()]
         if not valid_rows:
             return
+
+        # Check for existing files
+        existing_files = []
+        for name, url in valid_rows:
+            safe_name = sanitize_filename(name)
+            shortcut_path = os.path.join(folder, f"{safe_name}.url")
+            if os.path.exists(shortcut_path):
+                existing_files.append(safe_name)
+
+        if existing_files:
+            if len(existing_files) == 1:
+                msg = f"'{existing_files[0]}.url' already exists.\n\nDo you want to replace it?"
+            else:
+                file_list = ', '.join(f"'{f}.url'" for f in existing_files[:3])
+                if len(existing_files) > 3:
+                    file_list += f" and {len(existing_files) - 3} more"
+                msg = f"The following files already exist:\n{file_list}\n\nDo you want to replace them?"
+
+            response = messagebox.askyesno(
+                "Files Exist",
+                msg,
+                icon='warning'
+            )
+            if not response:
+                return
 
         # Show progress
         self.batch_progress.grid(row=3, column=0, sticky="ew", pady=(0, 10))

@@ -1,191 +1,192 @@
-# LinkDrop v1.1 Testing Checklist
+# LinkDrop v1.2 Testing Checklist
 
 ## Pre-Testing Setup
-- [ ] Fresh install completed via `LinkDrop-Setup-1.1.exe`
-- [ ] Previous version uninstalled (if applicable)
+- [x] Fresh install completed via `LinkDrop-Setup-1.2.exe`
+- [x] Previous version uninstalled (if applicable)
 
 ---
 
 ## 1. Installation Verification
 
 ### Add/Remove Programs
-- [ ] Open **Windows Settings → Apps → Installed Apps**
-- [ ] Search for "LinkDrop"
-- [ ] Verify LinkDrop appears in the list with correct version
+- [x] Open **Windows Settings → Apps → Installed Apps**
+- [x] Search for "LinkDrop"
+- [x] Verify LinkDrop appears in the list with correct version
 
 ### Desktop Shortcut
-- [ ] Check Desktop for "LinkDrop" shortcut
-- [ ] Verify icon displays correctly (teal/cyan LinkDrop icon)
-- [ ] Double-click to confirm it launches the app
+- [x] Check Desktop for "LinkDrop" shortcut
+- [x] Verify icon displays correctly (teal/cyan LinkDrop icon)
+- [x] Double-click to confirm it launches the app
 
 ### Start Menu
-- [ ] Click Start and search for "LinkDrop"
-- [ ] Verify LinkDrop appears in search results
-- [ ] Click to confirm it launches
+- [x] Click Start and search for "LinkDrop"
+- [x] Verify LinkDrop appears in search results
+- [x] Click to confirm it launches
 
 ### Context Menu
-- [ ] Open any folder in Windows Explorer
-- [ ] Right-click on empty space (not on a file)
-- [ ] Verify "LinkDrop Here" appears in context menu
-- [ ] Verify LinkDrop icon shows next to menu item
+- [x] Open any folder in Windows Explorer
+- [x] Right-click on empty space (not on a file)
+- [x] Verify "LinkDrop Here" appears in context menu
+- [x] Verify LinkDrop icon shows next to menu item
+
 
 ---
 
 ## 2. Main Application (LinkDrop.exe)
 
 ### Window & UI
-- [ ] App opens without errors
-- [ ] Window title shows "LinkDrop - URL Shortcut Creator"
-- [ ] LinkDrop icon appears in title bar and taskbar
-- [ ] Dark mode theme displays correctly
-- [ ] "Single" and "Batch" tabs are visible
+- [x] App opens without errors
+- [x] Window title shows "LinkDrop - URL Shortcut Creator"
+- [x] LinkDrop icon appears in title bar and taskbar
+- [x] Dark mode theme displays correctly
+- [x] "Single" and "Batch" tabs are visible
 
 ### Single Mode - Basic Functionality
-- [ ] URL field accepts input
-- [ ] Shortcut Name field accepts input
-- [ ] "Fetch website favicon" toggle works
-- [ ] "Clear" button clears both fields
-- [ ] "Browse..." button opens folder picker
-- [ ] Recent dropdown shows previously used folders
+- [x] URL field accepts input
+- [x] Shortcut Name field accepts input
+- [x] "Fetch website favicon" toggle works
+- [x] "Clear" button clears both fields
+- [x] "Browse..." button opens folder picker
+- [x] Recent dropdown shows previously used folders
 
 ### Single Mode - Create Shortcut
-- [ ] Enter URL: `https://google.com`
-- [ ] Enter Name: `Google`
-- [ ] Select a save location
-- [ ] Click "Create Shortcut"
-- [ ] Verify .url file created in selected folder
-- [ ] Double-click the .url file to verify it opens the website
-- [ ] Check if favicon was downloaded (shortcut should have Google icon)
+- [x] Enter URL: `https://google.com`
+- [x] Enter Name: `Google`
+- [x] Select a save location
+- [x] Click "Create Shortcut"
+- [x] Verify .url file created in selected folder
+- [x] Double-click the .url file to verify it opens the website
+- [x] Check if favicon was downloaded (shortcut should have Google icon)
 
 ### Single Mode - Auto-Fill Name
-- [ ] Clear both fields
-- [ ] Paste `https://github.com` into URL field (Ctrl+V)
-- [ ] Verify Name field auto-fills with "Github"
+- [x] Clear both fields
+- [x] Paste `https://github.com` into URL field (Ctrl+V)
+- [x] Verify Name field auto-fills with "Github"
 
 ### Single Mode - Clipboard Auto-Detect
-- [ ] Close LinkDrop
-- [ ] Copy a URL to clipboard: `https://microsoft.com`
-- [ ] Open LinkDrop
-- [ ] Verify URL field auto-fills with the copied URL
-- [ ] Verify Name field auto-fills with "Microsoft"
+- [x] Close LinkDrop
+- [x] Copy a URL to clipboard: `https://microsoft.com`
+- [x] Open LinkDrop
+- [x] Verify URL field auto-fills with the copied URL
+- [x] Verify Name field auto-fills with "Microsoft"
 
 ### Single Mode - File Path Rejection
-- [ ] Close LinkDrop
-- [ ] Copy a file path to clipboard: `C:\Users\joeh\Documents`
-- [ ] Open LinkDrop
-- [ ] Verify URL field stays EMPTY (file paths should be ignored)
+- [x] Close LinkDrop
+- [x] Copy a file path to clipboard: `C:\Users\joeh\Documents`
+- [x] Open LinkDrop
+- [x] Verify URL field stays EMPTY (file paths should be ignored)
 
 ### Batch Mode
-- [ ] Switch to "Batch" tab
-- [ ] Verify 3 empty rows displayed by default
-- [ ] Click "+ Add Row" to add more rows
-- [ ] Click "×" button to delete a row
-- [ ] Enter test data in multiple rows:
+- [x] Switch to "Batch" tab
+- [x] Verify 3 empty rows displayed by default
+- [x] Click "+ Add Row" to add more rows
+- [x] Click "×" button to delete a row
+- [x] Enter test data in multiple rows:
   - Row 1: URL: `https://youtube.com` | Name: `YouTube`
   - Row 2: URL: `https://amazon.com` | Name: `Amazon`
-- [ ] Toggle "Fetch favicons"
-- [ ] Click "Create All"
-- [ ] Verify progress bar appears during creation
-- [ ] Verify both .url files created
-- [ ] "Clear All" button resets to 3 empty rows
+- [x] Toggle "Fetch favicons"
+- [x] Click "Create All"
+- [x] Verify progress bar appears during creation
+- [x] Verify both .url files created
+- [x] "Clear All" button resets to 3 empty rows
 
 ---
 
 ## 3. Quick Popup (LinkDropQuick.exe)
 
 ### Launch via Context Menu
-- [ ] Navigate to Desktop or any folder
-- [ ] Right-click on empty space
-- [ ] Click "LinkDrop Here"
-- [ ] Verify quick popup opens
+- [x] Navigate to Desktop or any folder
+- [x] Right-click on empty space
+- [x] Click "LinkDrop Here"
+- [x] Verify quick popup opens
 
 ### Quick Popup UI
-- [ ] Window title shows "LinkDrop"
-- [ ] Window stays on top of other windows
-- [ ] URL field is focused and ready for input
-- [ ] Name field has "Auto-fills from URL" placeholder
+- [x] Window title shows "LinkDrop"
+- [x] Window stays on top of other windows
+- [x] URL field is focused and ready for input
+- [x] Name field has "Auto-fills from URL" placeholder
 
 ### Quick Popup - Create Shortcut
-- [ ] Enter URL: `https://reddit.com`
-- [ ] Verify Name auto-fills when pasting URL
-- [ ] Enter Name: `Reddit` (or accept auto-fill)
-- [ ] Press Enter or click "Create"
-- [ ] Verify popup closes after creation
-- [ ] Verify .url file created in the folder you right-clicked in
+- [x] Enter URL: `https://reddit.com`
+- [x] Verify Name auto-fills when pasting URL
+- [x] Enter Name: `Reddit` (or accept auto-fill)
+- [x] Press Enter or click "Create"
+- [x] Verify popup closes after creation
+- [x] Verify .url file created in the folder you right-clicked in
 
 ### Quick Popup - Clipboard Auto-Detect
-- [ ] Copy `https://twitter.com` to clipboard
-- [ ] Right-click in a folder → "LinkDrop Here"
-- [ ] Verify URL auto-fills from clipboard
-- [ ] Verify Name auto-fills with "Twitter"
+- [x] Copy `https://twitter.com` to clipboard
+- [x] Right-click in a folder → "LinkDrop Here"
+- [x] Verify URL auto-fills from clipboard
+- [x] Verify Name auto-fills with "Twitter"
 
 ### Quick Popup - Cancel
-- [ ] Open quick popup via context menu
-- [ ] Press Escape key
-- [ ] Verify popup closes without creating file
-- [ ] Re-open and click "Cancel" button
-- [ ] Verify same behavior
+- [x] Open quick popup via context menu
+- [x] Press Escape key
+- [x] Verify popup closes without creating file
+- [x] Re-open and click "Cancel" button
+- [x] Verify same behavior
 
 ---
 
 ## 4. Remember Last Location
 
-- [ ] Open LinkDrop main app
-- [ ] Browse to a specific folder (e.g., `C:\Users\joeh\Desktop\TestFolder`)
-- [ ] Create a shortcut there
-- [ ] Close LinkDrop completely
-- [ ] Re-open LinkDrop
-- [ ] Verify "Save Location" shows the previously used folder
+- [x] Open LinkDrop main app
+- [x] Browse to a specific folder (e.g., `C:\Users\joeh\Desktop\TestFolder`)
+- [x] Create a shortcut there
+- [x] Close LinkDrop completely
+- [x] Re-open LinkDrop
+- [x] Verify "Save Location" shows the previously used folder
 
 ---
 
 ## 5. Favicon Fetching
 
 ### Successful Favicon
-- [ ] Create shortcut for `https://google.com` with favicon enabled
-- [ ] Check the created .url file's icon (should show Google "G")
-- [ ] Create shortcut for `https://github.com` with favicon enabled
-- [ ] Check icon (should show GitHub octocat)
+- [x] Create shortcut for `https://google.com` with favicon enabled
+- [x] Check the created .url file's icon (should show Google "G")
+- [x] Create shortcut for `https://github.com` with favicon enabled
+- [x] Check icon (should show GitHub octocat)
 
 ### Favicon Fallback (Google Service)
-- [ ] Create shortcut for a less common site that might block direct favicon
-- [ ] Verify icon still downloads via Google's fallback service
+- [x] Create shortcut for a less common site that might block direct favicon
+- [x] Verify icon still downloads via Google's fallback service
 
 ### Favicon Disabled
-- [ ] Turn OFF "Fetch website favicon" toggle
-- [ ] Create a shortcut
-- [ ] Verify shortcut uses default Windows icon (no custom favicon)
+- [x] Turn OFF "Fetch website favicon" toggle
+- [x] Create a shortcut
+- [x] Verify shortcut uses default Windows icon (no custom favicon)
 
 ---
 
 ## 6. Edge Cases
 
 ### Invalid URL Handling
-- [ ] Try creating shortcut with empty URL - should not proceed
-- [ ] Try creating shortcut with empty Name - should not proceed
-- [ ] Try creating shortcut with invalid URL (e.g., "not a url") - should fail gracefully
+- [x] Try creating shortcut with empty URL - should not proceed
+- [x] Try creating shortcut with empty Name - should not proceed
+- [x] Try creating shortcut with invalid URL (e.g., "not a url") - should fail gracefully
 
 ### Special Characters in Name
-- [ ] Create shortcut with name containing spaces: `My Test Site`
-- [ ] Verify file created as `My Test Site.url`
+- [x] Create shortcut with name containing spaces: `My Test Site`
+- [x] Verify file created as `My Test Site.url`
 
 ### UNC/Network Paths (if available)
-- [ ] Browse to a network location (e.g., `\\server\share\folder`)
-- [ ] Create a shortcut there
-- [ ] Verify it works on network drives
+- [x] Browse to a network location (e.g., `\\server\share\folder`)
+- [x] Create a shortcut there
+- [x] Verify it works on network drives
 
 ---
 
 ## 7. Uninstall Verification
 
-- [ ] Open **Windows Settings → Apps → Installed Apps**
-- [ ] Find LinkDrop and click Uninstall
-- [ ] Confirm uninstall
-- [ ] Verify:
-  - [ ] LinkDrop removed from Apps list
-  - [ ] Desktop shortcut removed
-  - [ ] Start Menu entry removed
-  - [ ] Context menu "LinkDrop Here" removed (may need Explorer restart)
+- [x] Open **Windows Settings → Apps → Installed Apps**
+- [x] Find LinkDrop and click Uninstall
+- [x] Confirm uninstall
+- [x] Verify:
+  - [x] LinkDrop removed from Apps list
+  - [x] Desktop shortcut removed
+  - [x] Start Menu entry removed
+  - [x] Context menu "LinkDrop Here" removed (may need Explorer restart)
 
 ---
 
@@ -207,8 +208,10 @@
 
 ## Notes / Issues Found
 
-(Record any bugs or issues here)
+### Resolved in v1.2
 
-1.
-2.
-3.
+1. **[FIXED]** Batch mode Name column now auto-populates from URL (like Single mode)
+2. **[FIXED]** Added duplicate file warning dialog when overwriting existing shortcuts
+3. **[FIXED]** Clipboard auto-detect now only accepts valid URLs (rejects random text)
+4. **[IMPROVED]** Icons now fetch at higher resolution (256px) for better quality
+5. **[FIXED]** Clipboard no longer populates fields with non-URL data

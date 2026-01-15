@@ -12,12 +12,13 @@ import sys
 import os
 import ctypes
 import customtkinter as ctk
+from tkinter import messagebox
 
 # Add parent directory to path for imports when running as script
 if __name__ == "__main__":
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.core import create_url_shortcut, validate_url
+from src.core import create_url_shortcut, validate_url, is_likely_url, sanitize_filename
 
 # App colors
 TEAL_ACCENT = "#4ecdc4"
@@ -171,9 +172,8 @@ class QuickPopup(ctk.CTk):
                 # Skip file paths (Windows drive letters or UNC paths)
                 if len(clipboard) > 2 and (clipboard[1] == ':' or clipboard.startswith('\\\\')):
                     return
-                # Check if clipboard looks like a URL
-                is_valid, normalized = validate_url(clipboard)
-                if is_valid:
+                # Use strict URL detection for clipboard (rejects random text)
+                if is_likely_url(clipboard):
                     self.url_entry.insert(0, clipboard)
                     self._check_auto_name()
         except Exception:
@@ -230,6 +230,23 @@ class QuickPopup(ctk.CTk):
         if not is_valid:
             self.url_entry.focus_set()
             return
+
+        # Check for existing file
+        safe_name = sanitize_filename(name)
+        shortcut_path = os.path.join(self.save_dir, f"{safe_name}.url")
+        if os.path.exists(shortcut_path):
+            response = messagebox.askyesnocancel(
+                "File Exists",
+                f"'{safe_name}.url' already exists.\n\nDo you want to replace it?",
+                icon='warning'
+            )
+            if response is None:  # Cancel
+                return
+            if not response:  # No - user can rename manually
+                self.name_entry.focus_set()
+                self.name_entry.select_range(0, 'end')
+                return
+            # Yes - continue to overwrite
 
         # Disable button during creation
         self.create_btn.configure(state="disabled")

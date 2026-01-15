@@ -41,6 +41,54 @@ class ShortcutResult:
     error: Optional[str] = None
 
 
+def is_likely_url(text: str) -> bool:
+    """
+    Check if text looks like a URL (for clipboard auto-detection).
+
+    More strict than validate_url() - requires explicit http(s):// prefix
+    or a recognizable domain pattern with common TLD.
+
+    Args:
+        text: Text to check
+
+    Returns:
+        True if text appears to be a URL
+    """
+    if not text or not text.strip():
+        return False
+
+    text = text.strip()
+
+    # Must not contain spaces or newlines (URLs don't have these)
+    if ' ' in text or '\n' in text or '\t' in text:
+        return False
+
+    # Accept if it starts with http:// or https://
+    if text.startswith(('http://', 'https://')):
+        return True
+
+    # Accept if it looks like a domain with common TLD
+    common_tlds = (
+        '.com', '.org', '.net', '.io', '.co', '.edu', '.gov', '.mil',
+        '.dev', '.app', '.ai', '.info', '.biz', '.me', '.tv', '.us',
+        '.uk', '.ca', '.de', '.fr', '.au', '.jp', '.cn', '.in', '.br',
+        '.xyz', '.tech', '.online', '.site', '.store', '.cloud', '.so',
+        '.gg', '.ly', '.to', '.fm', '.am', '.be', '.it', '.es', '.nl'
+    )
+
+    # Check if text contains a TLD (case insensitive)
+    text_lower = text.lower()
+    for tld in common_tlds:
+        # TLD should be followed by nothing, /, :, or ?
+        tld_pos = text_lower.find(tld)
+        if tld_pos > 0:  # Must have something before the TLD
+            after_tld = text_lower[tld_pos + len(tld):]
+            if not after_tld or after_tld[0] in ('/', ':', '?', '#'):
+                return True
+
+    return False
+
+
 def validate_url(url: str) -> Tuple[bool, str]:
     """
     Validate a URL string.
@@ -170,9 +218,9 @@ def fetch_favicon(url: str) -> Optional[str]:
     except requests.RequestException:
         pass
 
-    # Fallback to Google's favicon service
+    # Fallback to Google's favicon service (request largest available size)
     try:
-        google_favicon_url = f"https://www.google.com/s2/favicons?domain={domain}&sz=64"
+        google_favicon_url = f"https://www.google.com/s2/favicons?domain={domain}&sz=256"
         response = requests.get(
             google_favicon_url,
             timeout=timeout,
@@ -213,11 +261,19 @@ def _save_as_ico(image_data: bytes, output_path: str) -> bool:
         if img.mode != 'RGBA':
             img = img.convert('RGBA')
 
-        # Resize to standard icon sizes
-        sizes = [(16, 16), (32, 32), (48, 48)]
+        # Resize to standard icon sizes (include larger sizes for high-DPI displays)
+        sizes = [(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]
         icons = []
         for size in sizes:
-            resized = img.resize(size, Image.Resampling.LANCZOS)
+            # Only create sizes up to the source image size to avoid upscaling
+            if img.width >= size[0] and img.height >= size[1]:
+                resized = img.resize(size, Image.Resampling.LANCZOS)
+                icons.append(resized)
+
+        # Ensure we have at least one size
+        if not icons:
+            # Source is smaller than 16x16, resize to smallest
+            resized = img.resize((16, 16), Image.Resampling.LANCZOS)
             icons.append(resized)
 
         # Save as ICO with multiple sizes
