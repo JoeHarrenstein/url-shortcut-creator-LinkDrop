@@ -167,10 +167,14 @@ class QuickPopup(ctk.CTk):
         try:
             clipboard = self.clipboard_get()
             if clipboard and not self.url_entry.get().strip():
+                clipboard = clipboard.strip()
+                # Skip file paths (Windows drive letters or UNC paths)
+                if len(clipboard) > 2 and (clipboard[1] == ':' or clipboard.startswith('\\\\')):
+                    return
                 # Check if clipboard looks like a URL
                 is_valid, normalized = validate_url(clipboard)
                 if is_valid:
-                    self.url_entry.insert(0, clipboard.strip())
+                    self.url_entry.insert(0, clipboard)
                     self._check_auto_name()
         except Exception:
             # Clipboard may be empty or contain non-text data
