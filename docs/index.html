@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LinkDrop - A free Windows utility for creating .url shortcut files with automatic favicon fetching. Perfect for shared network drives.">
+    <title>LinkDrop | URL Shortcut Creator for Windows</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <!-- Header/Navigation -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">LinkDrop</a>
+            <div class="nav-links">
+                <a href="#features" class="nav-link mono">Features</a>
+                <a href="#download" class="nav-link mono">Download</a>
+                <a href="https://github.com/joeharrenstein/url-shortcut-creator" target="_blank" rel="noopener noreferrer" class="nav-link mono">GitHub</a>
+            </div>
+            <a href="https://harrenstein.com" class="nav-back mono">&larr; harrenstein.com</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-up" style="--delay: 0">LinkDrop</h1>
+                <p class="hero-tagline animate-fade-up" style="--delay: 1">Create URL shortcuts with one click.</p>
+                <p class="hero-description animate-fade-up" style="--delay: 2">
+                    A free Windows utility for creating .url shortcut files with automatic
+                    favicon fetching. Perfect for shared network drives and organized bookmarks.
+                </p>
+                <div class="hero-cta animate-fade-up" style="--delay: 3">
+                    <a href="https://github.com/joeharrenstein/url-shortcut-creator/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download for Windows
+                    </a>
+                    <a href="https://github.com/joeharrenstein/url-shortcut-creator" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image animate-fade-up" style="--delay: 4">
+                <img src="../screenshots/Main App - Single Mode.png" alt="LinkDrop main application window showing single mode">
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features" id="features">
+            <header class="section-header">
+                <span class="section-label mono">// FEATURES</span>
+                <h2 class="section-title scroll-animate">Everything You Need</h2>
+            </header>
+
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Single & Batch Modes</h3>
+                    <p class="feature-description">
+                        Create one shortcut at a time or process multiple URLs in batch mode
+                        for maximum efficiency.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <line x1="21.17" y1="8" x2="12" y2="8"/>
+                            <line x1="3.95" y1="6.06" x2="8.54" y2="14"/>
+                            <line x1="10.88" y1="21.94" x2="15.46" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Automatic Favicons</h3>
+                    <p class="feature-description">
+                        Fetches high-quality 256px favicons automatically using Google's
+                        favicon service for crisp icons.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Clipboard Auto-Detect</h3>
+                    <p class="feature-description">
+                        Automatically detects URLs in your clipboard when you open the app
+                        for instant shortcut creation.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"/>
+                            <circle cx="19" cy="12" r="1"/>
+                            <circle cx="5" cy="12" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Right-Click Integration</h3>
+                    <p class="feature-description">
+                        Optional Windows context menu integration lets you create shortcuts
+                        directly from any folder.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Duplicate Warning</h3>
+                    <p class="feature-description">
+                        Warns you before overwriting existing shortcuts, preventing accidental
+                        data loss.
+                    </p>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                            <line x1="12" y1="11" x2="12" y2="17"/>
+                            <line x1="9" y1="14" x2="15" y2="14"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Network Path Support</h3>
+                    <p class="feature-description">
+                        Full UNC path support for saving shortcuts directly to shared
+                        network drives and mapped locations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="section screenshots" id="screenshots">
+            <header class="section-header">
+                <span class="section-label mono">// SCREENSHOTS</span>
+                <h2 class="section-title scroll-animate">See It In Action</h2>
+            </header>
+
+            <div class="screenshots-grid">
+                <div class="screenshot-item scroll-animate">
+                    <div class="screenshot-wrapper">
+                        <img src="../screenshots/Main App - Batch Mode.png" alt="LinkDrop batch mode for processing multiple URLs">
+                    </div>
+                    <p class="screenshot-caption mono">Batch Mode - Process multiple URLs at once</p>
+                </div>
+
+                <div class="screenshot-item scroll-animate">
+                    <div class="screenshot-wrapper">
+                        <img src="../screenshots/Context Menu.png" alt="Windows context menu integration">
+                    </div>
+                    <p class="screenshot-caption mono">Right-click context menu integration</p>
+                </div>
+
+                <div class="screenshot-item scroll-animate">
+                    <div class="screenshot-wrapper">
+                        <img src="../screenshots/Quick popup.png" alt="Quick popup for fast shortcut creation">
+                    </div>
+                    <p class="screenshot-caption mono">Quick popup from context menu</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="section download" id="download">
+            <div class="download-content scroll-animate">
+                <h2 class="download-title">Ready to Get Started?</h2>
+                <p class="download-description">
+                    Download LinkDrop and start creating organized URL shortcuts in seconds.
+                </p>
+                <a href="https://github.com/joeharrenstein/url-shortcut-creator/releases/latest" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Download v1.2 for Windows
+                </a>
+                <p class="download-note mono">Requires Windows 10 or 11</p>
+                <a href="https://github.com/joeharrenstein/url-shortcut-creator" target="_blank" rel="noopener noreferrer" class="download-source mono">
+                    Or build from source on GitHub &rarr;
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-credit">
+                A project by <a href="https://harrenstein.com" target="_blank" rel="noopener noreferrer">Joe Harrenstein</a>
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/joeharrenstein/url-shortcut-creator" target="_blank" rel="noopener noreferrer" class="footer-link mono">GitHub</a>
+                <a href="https://buymeacoffee.com/jharrenstein" target="_blank" rel="noopener noreferrer" class="footer-link mono">Buy Me a Coffee</a>
+                <a href="https://harrenstein.com" target="_blank" rel="noopener noreferrer" class="footer-link mono">harrenstein.com</a>
+            </div>
+            <p class="footer-copyright mono">&copy; 2025 Joe Harrenstein</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
